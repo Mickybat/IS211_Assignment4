@@ -75,97 +75,92 @@ def binary_search_recursive(a_list, item):
                 return binary_search_recursive(a_list[midpoint + 1:], item)
 
 
+list_sizes = [500, 1000, 5000]
+
+n500 = list_sizes[0]
+n1000 = list_sizes[1]
+n5000 = list_sizes[2]
+
+
+def getAverageTimesequential_search(list):
+    total_time = 0
+    for i in range(100):
+        myList = get_me_random_list(list)
+        start = time.time()
+        sequential_search(myList, 9999)
+        time_spent = time.time() - start
+        total_time += time_spent
+
+    return total_time / 100
+
+def getAverageTimeordered_sequential_search(list):
+    total_time = 0
+    for i in range(100):
+        myList = get_me_random_list(list)
+        start = time.time()
+        ordered_sequential_search(myList, 9999)
+        time_spent = time.time() - start
+        total_time += time_spent
+
+    return total_time / 100
+
+def getAverageTimebinary_search_iterative(list):
+    total_time = 0
+    for i in range(100):
+        myList = get_me_random_list(list)
+        start = time.time()
+        binary_search_iterative(myList, 9999)
+        time_spent = time.time() - start
+        total_time += time_spent
+
+    return total_time / 100
+
+def getAverageTimebinary_search_recursive(list):
+    total_time = 0
+    for i in range(100):
+        myList = get_me_random_list(list)
+        start = time.time()
+        binary_search_recursive(myList, 9999)
+        time_spent = time.time() - start
+        total_time += time_spent
+
+    return total_time / 100
 def main():
-    list_sizes = [500, 1000, 5000]
-
-    n500 = list_sizes[0]
-    n1000 = list_sizes[1]
-    n5000 = list_sizes[2]
-
-    total_time = 0
-    for i in range(100):
-        mylist500 = get_me_random_list(n500)
-        mylist1000 = get_me_random_list(n1000)
-        mylist5000 = get_me_random_list(n5000)
-        start = time.time()
-        sequential_search(mylist500, 9999)
-        sequential_search(mylist1000, 9999)
-        sequential_search(mylist5000, 9999)
-        time_spent = time.time() - start
-        total_time += time_spent
-
-    avg_time = total_time / 100
+    avg_time = getAverageTimesequential_search(n500)
     print(f"sequential search took {avg_time:10.7f} seconds to run, on average for a list of {n500} elements")
+
+    avg_time = getAverageTimesequential_search(n1000)
     print(f"sequential search took {avg_time:10.7f} seconds to run, on average for a list of {n1000} elements")
-    print(f"sequential search {avg_time:10.7f} seconds to run, on average for a list of {n5000} elements")
 
-    total_time = 0
-    for i in range(100):
-        mylist500 = get_me_random_list(n500)
-        mylist1000 = get_me_random_list(n1000)
-        mylist5000 = get_me_random_list(n5000)
-        start = time.time()
-        ordered_sequential_search(mylist500, 9999)
-        ordered_sequential_search(mylist1000, 9999)
-        ordered_sequential_search(mylist5000, 9999)
-        time_spent = time.time() - start
-        total_time += time_spent
+    avg_time = getAverageTimesequential_search(n5000)
+    print(f"sequential search took {avg_time:10.7f} seconds to run, on average for a list of {n5000} elements")
 
-    avg_time = total_time / 100
-    print(f"ordered_sequential_search took {avg_time:10.7f} seconds to run, on average for a list of {n500} elements")
-    print(f"ordered_sequential_search  took {avg_time:10.7f} seconds to run, on average for a list of {n1000} elements")
-    print(f"ordered_sequential_search  took {avg_time:10.7f} seconds to run, on average for a list of {n5000} elements")
+    avg_time = getAverageTimeordered_sequential_search(n500)
+    print(f"ordered sequential search took {avg_time:10.7f} seconds to run, on average for a list of {n500} elements")
 
-    total_time = 0
-    for i in range(100):
-        mylist500 = get_me_random_list(n500)
-        mylist1000 = get_me_random_list(n1000)
-        mylist5000 = get_me_random_list(n5000)
-        start = time.time()
-        binary_search_iterative(mylist500, 9999)
-        binary_search_iterative(mylist1000, 9999)
-        binary_search_iterative(mylist5000, 9999)
-        time_spent = time.time() - start
-        total_time += time_spent
+    avg_time = getAverageTimeordered_sequential_search(n1000)
+    print(f"ordered sequential search took {avg_time:10.7f} seconds to run, on average for a list of {n1000} elements")
 
-    avg_time = total_time / 100
-    print(f"binary_search_iterative took {avg_time:10.7f} seconds to run, on average for a list of {n500} elements")
-    print(f"binary_search_iterative took {avg_time:10.7f} seconds to run, on average for a list of {n1000} elements")
-    print(f"binary_search_iterative took {avg_time:10.7f} seconds to run, on average for a list of {n5000} elements")
+    avg_time = getAverageTimeordered_sequential_search(n5000)
+    print(f"ordered sequential search took {avg_time:10.7f} seconds to run, on average for a list of {n5000} elements")
 
-    total_time = 0
-    for i in range(100):
-        mylist500 = get_me_random_list(n500)
-        mylist1000 = get_me_random_list(n1000)
-        mylist5000 = get_me_random_list(n5000)
-        start = time.time()
-        ordered_sequential_search(mylist500, 9999)
-        ordered_sequential_search(mylist1000, 9999)
-        ordered_sequential_search(mylist5000, 9999)
-        time_spent = time.time() - start
-        total_time += time_spent
+    avg_time = getAverageTimebinary_search_iterative(n500)
+    print(f"binary search iterative took {avg_time:10.7f} seconds to run, on average for a list of {n500} elements")
 
-    avg_time = total_time / 100
-    print(f"ordered_sequential_search took {avg_time:10.7f} seconds to run, on average for a list of {n500} elements")
-    print(f"ordered_sequential_search  took {avg_time:10.7f} seconds to run, on average for a list of {n1000} elements")
-    print(f"ordered_sequential_search  took {avg_time:10.7f} seconds to run, on average for a list of {n5000} elements")
+    avg_time = getAverageTimebinary_search_iterative(n1000)
+    print(f"binary search iterative took {avg_time:10.7f} seconds to run, on average for a list of {n1000} elements")
 
-    total_time = 0
-    for i in range(100):
-        mylist500 = get_me_random_list(n500)
-        mylist1000 = get_me_random_list(n1000)
-        mylist5000 = get_me_random_list(n5000)
-        start = time.time()
-        binary_search_recursive(mylist500, 9999)
-        binary_search_recursive(mylist1000, 9999)
-        binary_search_recursive(mylist5000, 9999)
-        time_spent = time.time() - start
-        total_time += time_spent
+    avg_time = getAverageTimebinary_search_iterative(n5000)
+    print(f"binary search iterative took {avg_time:10.7f} seconds to run, on average for a list of {n5000} elements")
 
-    avg_time = total_time / 100
-    print(f"binary_search_recursive took {avg_time:10.7f} seconds to run, on average for a list of {n500} elements")
-    print(f"binary_search_recursive took {avg_time:10.7f} seconds to run, on average for a list of {n1000} elements")
-    print(f"binary_search_recursive took {avg_time:10.7f} seconds to run, on average for a list of {n5000} elements")
+    avg_time = getAverageTimebinary_search_recursive(n500)
+    print(f"binary search recursive took {avg_time:10.7f} seconds to run, on average for a list of {n500} elements")
+
+    avg_time = getAverageTimebinary_search_recursive(n1000)
+    print(f"binary search recursive took {avg_time:10.7f} seconds to run, on average for a list of {n1000} elements")
+
+    avg_time = getAverageTimebinary_search_recursive(n5000)
+    print(f"binary search recursive took {avg_time:10.7f} seconds to run, on average for a list of {n5000} elements")
 
 
 main()
